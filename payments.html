@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Subscription Plans and Payments</title>
+
+   <!-- Font Awesome CDN link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- Custom CSS file link  -->
+   <link rel="stylesheet" href="css/style.css">
+
+   <!-- Custom JavaScript file link  -->
+   <script src="js/script.js"></script>
+
+   <style>
+      .payment-options {
+         display: flex;
+         justify-content: space-around;
+         align-items: center;
+         flex-wrap: wrap;
+         max-width: 600px; /* Adjust as needed */
+         margin: 0 auto;
+      }
+      
+      .payment-option {
+         text-align: center;
+         margin: 20px;
+         text-decoration: none;
+         color: inherit;
+         display: block;
+      }
+      
+      .payment-option img {
+         width: 120px; /* Adjust the image width */
+         height: auto;
+         border-radius: 10px;
+         margin-bottom: 10px;
+      }
+      
+      .subscription-plans {
+         max-width: 600px; /* Adjust as needed */
+         margin: 20px auto;
+         text-align: center;
+      }
+      
+      .subscription-plans label {
+         display: block;
+         margin-bottom: 10px;
+      }
+   </style>
+</head>
+<body>
+
+<header class="header">
+   <section class="flex">
+      <a href="home.html" class="logo">Educa.</a>
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+   </section>
+</header>   
+
+<div class="side-bar">
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+   <nav class="navbar">
+      <a href="home.html"><i class="fas fa-home"></i><span>home</span></a>
+      <a href="about.html"><i class="fas fa-question"></i><span>about</span></a>
+      <a href="courses.html"><i class="fas fa-graduation-cap"></i><span>courses</span></a>
+      <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>teachers</span></a>
+      <a href="contact.html"><i class="fas fa-headset"></i><span>contact us</span></a>
+      <a href="payments.html"><i class="fas fa-money-bill-wave"></i><span>payments</span></a>
+   </nav>
+</div>
+
+<section class="subscription">
+   <h1 class="heading">Choose a Subscription Plan</h1>
+   <div class="subscription-plans">
+      <label>
+         <input type="radio" name="plan" value="plan1" onclick="selectPlan('plan1')">
+         Plan 1 - $10/month
+      </label>
+      <label>
+         <input type="radio" name="plan" value="plan2" onclick="selectPlan('plan2')">
+         Plan 2 - $20/month
+      </label>
+      <label>
+         <input type="radio" name="plan" value="plan3" onclick="selectPlan('plan3')">
+         Plan 3 - $30/month
+      </label>
+   </div>
+   <div class="payment-options" id="paymentOptions">
+      <!-- Payment options will be dynamically added here -->
+   </div>
+</section>
+
+</body>
+</html>

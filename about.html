@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>About Us</title>
+
+   <!-- Font Awesome CDN link -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- Custom CSS file link -->
+   <link rel="stylesheet" href="css/style.css">
+
+   <style>
+      /* Additional styles specific to the about page */
+      body {
+         font-family: Arial, sans-serif;
+         background-color: #f0f0f0;
+         margin: 0;
+         padding: 0;
+      }
+
+      .header {
+         background-color: #007bff;
+         color: #fff;
+         padding: 10px 0;
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         z-index: 1000;
+      }
+
+      .header .flex {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 0 20px;
+      }
+
+      .header .logo {
+         font-size: 24px;
+         font-weight: bold;
+         text-decoration: none;
+         color: #fff;
+      }
+
+      .header .search-form {
+         display: flex;
+         align-items: center;
+      }
+
+      .header .search-form input[type="text"] {
+         padding: 8px;
+         border: none;
+         border-radius: 4px;
+         font-size: 14px;
+         margin-right: 10px;
+      }
+
+      .header .search-form button {
+         background-color: transparent;
+         border: none;
+         cursor: pointer;
+         color: #fff;
+         font-size: 16px;
+      }
+
+      .header .icons {
+         display: flex;
+         align-items: center;
+         gap: 10px;
+      }
+
+      .header .icons .fas {
+         cursor: pointer;
+         font-size: 18px;
+      }
+
+      .header .profile {
+         display: flex;
+         align-items: center;
+         gap: 10px;
+         color: #fff;
+      }
+
+      .header .profile .image {
+         width: 40px;
+         height: 40px;
+         border-radius: 50%;
+      }
+
+      .header .profile .name {
+         font-size: 16px;
+         font-weight: bold;
+      }
+
+      .header .profile .role {
+         font-size: 14px;
+         margin: 0;
+      }
+
+      .header .profile .btn {
+         padding: 8px 16px;
+         background-color: transparent;
+         border: 1px solid #fff;
+         border-radius: 4px;
+         color: #fff;
+         text-decoration: none;
+         font-size: 14px;
+         transition: background-color 0.3s ease;
+      }
+
+      .header .profile .btn:hover {
+         background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .side-bar {
+         position: fixed;
+         top: 50px;
+         left: 0;
+         width: 250px;
+         background-color: #333;
+         height: 100%;
+         padding-top: 20px;
+         transition: transform 0.3s ease;
+         transform: translateX(-100%);
+         z-index: 900;
+      }
+
+      .side-bar.active {
+         transform: translateX(0%);
+      }
+
+      .side-bar .profile {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         gap: 10px;
+         padding: 20px;
+         border-bottom: 1px solid #555;
+      }
+
+      .side-bar .profile .image {
+         width: 80px;
+         height: 80px;
+         border-radius: 50%;
+      }
+
+      .side-bar .profile .name {
+         color: #fff;
+         font-size: 18px;
+         font-weight: bold;
+      }
+
+      .side-bar .profile .role {
+         color: #ccc;
+         font-size: 14px;
+         margin: 0;
+      }
+
+      .side-bar .navbar {
+         margin-top: 20px;
+         padding: 0;
+         list-style-type: none;
+      }
+
+      .side-bar .navbar a {
+         display: block;
+         padding: 15px 20px;
+         color: #ccc;
+         text-decoration: none;
+         transition: background-color 0.3s ease;
+      }
+
+      .side-bar .navbar a:hover {
+         background-color: #555;
+      }
+
+      .about {
+         max-width: 1200px;
+         margin: 80px auto;
+         padding: 20px;
+         background-color: #fff;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         border-radius: 8px;
+      }
+
+      .about .row {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         margin-bottom: 40px;
+      }
+
+      .about .row .image {
+         flex: 1;
+         margin-right: 20px;
+      }
+
+      .about .row .content {
+         flex: 1;
+         text-align: justify;
+      }
+
+      .about .row h3 {
+         font-size: 24px;
+         margin-bottom: 10px;
+      }
+
+      .about .row p {
+         font-size: 16px;
+         line-height: 1.6;
+      }
+
+      .about .row .inline-btn {
+         display: inline-block;
+         padding: 10px 20px;
+         background-color: #007bff;
+         color: #fff;
+         text-decoration: none;
+         border-radius: 4px;
+         margin-top: 20px;
+         transition: background-color 0.3s ease;
+      }
+
+      .about .row .inline-btn:hover {
+         background-color: #0056b3;
+      }
+
+      .reviews {
+         max-width: 1200px;
+         margin: 40px auto;
+         padding: 20px;
+         background-color: #fff;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         border-radius: 8px;
+      }
+
+      .reviews .heading {
+         font-size: 28px;
+         margin-bottom: 20px;
+         text-align: center;
+      }
+
+      .reviews .box-container {
+         display: flex;
+         gap: 20px;
+         flex-wrap: wrap;
+         justify-content: center;
+      }
+
+      .reviews .box {
+         width: 300px;
+         padding: 20px;
+         background-color: #f9f9f9;
+         box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+         border-radius: 8px;
+         margin-bottom: 20px;
+      }
+
+      .reviews .box p {
+         font-size: 16px;
+         line-height: 1.6;
+      }
+
+      .reviews .box .student {
+         display: flex;
+         align-items: center;
+         margin-top: 20px;
+      }
+
+      .reviews .box .student img {
+         width: 50px;
+         height: 50px;
+         border-radius: 50%;
+         margin-right: 10px;
+      }
+
+      .reviews .box .student .stars {
+         color: #f1c40f;
+      }
+
+      .reviews .box .student .stars .fas {
+         font-size: 18px;
+      }
+
+      .footer {
+         background-color: #333;
+         color: #fff;
+         text-align: center;
+         padding: 20px 0;
+         position: fixed;
+         bottom: 0;
+         left: 0;
+         width: 100%;
+      }
+
+      .footer span {
+         font-weight: bold;
+      }
+
+
+   .header .search-form {
+      display: flex;
+      align-items: center;
+      position: relative; /* Ensure relative positioning for absolute child */
+   }
+
+   .header .search-form input[type="text"] {
+      padding: 8px 12px;
+      border: 2px solid #fff;
+      border-radius: 4px;
+      font-size: 14px;
+      margin-right: 10px;
+      transition: border-color 0.3s ease;
+      width: 200px;
+   }
+
+   .header .search-form input[type="text"]:focus {
+      border-color: #007bff;
+      outline: none;
+   }
+
+   .header .search-form button {
+      background-color: #007bff;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+   }
+
+   .header .search-form button:hover {
+      background-color: #0056b3;
+   }
+
+   /* Additional styles specific to the sidebar search form */
+   .side-bar .search-form {
+      display: flex;
+      align-items: center;
+      margin: 20px 0;
+   }
+
+   .side-bar .search-form input[type="text"] {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      width: 150px;
+   }
+
+   .side-bar .search-form button {
+      background-color: #333;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      font-size: 14px;
+      padding: 8px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+   }
+
+   .side-bar .search-form button:hover {
+      background-color: #555;
+   }
+
+   
+   </style>
+
+</head>
+<body>
+
+<header class="header">
+   <section class="flex">
+      <a href="home.html" class="logo">Educa</a>
+
+      <!-- Search Form -->
+      <form id="search-form" action="#">
+         <input type="text" id="search-box" name="search_box" required placeholder="Search courses..." maxlength="100">
+         <button type="submit"><i class="fas fa-search"></i></button>
+      </form>
+
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <!-- Profile Section (Simulated for demo) -->
+      <div class="profile">
+         <img src="images/pic-1.jpg" class="image" alt="Profile Image">
+         <h3 class="name">Shaikh Anas</h3>
+         <p class="role">Student</p>
+         <a href="profile.html" class="btn">View Profile</a>
+         <div class="flex-btn">
+            <a href="login.html" class="option-btn">Login</a>
+            <a href="register.html" class="option-btn">Register</a>
+         </div>
+      </div>
+
+   </section>
+</header>
+
+<div class="side-bar">
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+
+   <!-- Profile Sidebar Section (Simulated for demo) -->
+   <div class="profile">
+      <img src="images/pic-1.jpg" class="image" alt="Profile Image">
+      <h3 class="name">Shashi kumar</h3>
+      <p class="role">Student</p>
+      <a href="profile.html" class="btn">View Profile</a>
+   </div>
+
+   <!-- Navigation Sidebar Section -->
+   <nav class="navbar">
+      <a href="home.html"><i class="fas fa-home"></i><span>Home</span></a>
+      <a href="about.html"><i class="fas fa-question"></i><span>About</span></a>
+      <a href="courses.html"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
+      <a href="teachers.html"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+      <a href="contact.html"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+   </nav>
+</div>
+
+<section class="about">
+   <div class="row">
+      <div class="image">
+         <img src="images/about-img.svg" alt="About Image">
+      </div>
+      <div class="content">
+         <h3>Why Choose Us?</h3>
+         <p>Choosing us creates a better option where availability of knowledge here with little cost and free availability of resources.</p>
+         <a href="courses.html" class="inline-btn">Our Courses</a>
+      </div>
+   </div>
+
+   <!-- Statistics Boxes Section -->
+   <div class="box-container">
+      <div class="box">
+         <i class="fas fa-graduation-cap"></i>
+         <div>
+            <h3>+10k</h3>
+            <p>Online courses</p>
+         </div>
+      </div>
+      <div class="box">
+         <i class="fas fa-user-graduate"></i>
+         <div>
+            <h3>+40k</h3>
+            <p>Brilliant students</p>
+         </div>
+      </div>
+      <div class="box">
+         <i class="fas fa-chalkboard-user"></i>
+         <div>
+            <h3>+2k</h3>
+            <p>Expert tutors</p>
+         </div>
+      </div>
+      <div class="box">
+         <i class="fas fa-briefcase"></i>
+         <div>
+            <h3>100%</h3>
+            <p>Job placement</p>
+         </div>
+      </div>
+   </div>
+</section>
+
+<section class="reviews">
+   <h1 class="heading">Students' Reviews</h1>
+   <div class="box-container">
+      <div class="box">
+         <p>Good and excellent teachers.</p>
+         <div class="student">
+            <img src="images/pic-2.jpg" alt="Student Image">
+            <div>
+               <h3>Vikram</h3>
+               <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="box">
+         <p>More professional knowledge easy to learn.</p>
+         <div class="student">
+            <img src="images/pic-3.jpg" alt="Student Image">
+            <div>
+               <h3>Vijay</h3>
+               <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<footer class="footer">
+   &copy; Copyright @ 2024 by <span>CODE RIDERS</span> | All rights reserved!
+</footer>
+
+<!-- Custom JavaScript file link -->
+<script src="js/script.js"></script>
+
+<script>
+// JavaScript for Search Functionality
+const searchForm = document.getElementById('search-form');
+
+searchForm.addEventListener('submit', function(event) {
+   event.preventDefault();
+   
+   const searchBox = document.getElementById('search-box');
+   const searchTerm = searchBox.value.toLowerCase();
+
+   // Define redirection based on search terms
+   if (searchTerm.includes('profile')) {
+      window.location.href = 'profile.html';
+   } else if (searchTerm.includes('playlist')) {
+      window.location.href = 'playlist.html';
+   } else if (searchTerm.includes('teacher profile')) {
+      window.location.href = 'teacher_profile.html';
+   } else if (searchTerm.includes('courses')) {
+      window.location.href = 'courses.html';
+   } else {
+      alert(`No results found for "${searchBox.value}"`);
+   }
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Generator</title>
+    <link rel="stylesheet" href="ind.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Automatic Code Generator</h1>
+        <label for="language">Select Language:</label>
+        <select id="language" onchange="updateAlgorithms()">
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="javascript">JavaScript</option>
+            <option value="java">Java</option>
+            <option value="python">Python</option>
+        </select>
+        <label for="algorithm">Select Algorithm:</label>
+        <select id="algorithm" onchange="updatelanguages()">
+            <option value="bubble sort">bubble sort</option>
+            <option value="binary search">binary search</option>
+            <option value="fibonacci">fibonacci</option>
+            <option value="quick sort">quicksort</option>
+            <option value="merge sort">merge sort</option>
+            <option value="insertion sort">insertion sort</option>
+            <option value="linear search">linear search</option>
+            <option value="">None</option>
+        </select>
+        <button onclick="generateCode()">Generate Code</button>
+        <pre id="codeOutput"></pre>
+    </div>
+    <script src="script1.js"></script>
+</body>
+</html>
+
+
+
